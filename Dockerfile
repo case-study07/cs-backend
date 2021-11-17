@@ -12,11 +12,7 @@ RUN apk add bash git vim
 
 ENV NODE_ENV development
 
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
-
 COPY . .
-USER nextjs
 EXPOSE 3000
 ENV PORT 3000
 
