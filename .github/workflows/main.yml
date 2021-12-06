@@ -32,7 +32,7 @@ jobs:
       - name: Set foobar to cool
         uses: mikefarah/yq@master
         with:
-          cmd: yq eval '.spec.template.spec.containers[0].image |= "docker.io/raityupiyo/cs-admin-frontend:'${IMAGE_TAG}'"' -i admin-front-deployment.yaml
+          cmd: yq eval '.spec.template.spec.containers[0].image |= "docker.io/raityupiyo/cs-end-frontend:'${IMAGE_TAG}'"' -i end-front-deployment.yaml
         env:
           IMAGE_TAG: ${{ github.run_number }} 
 
