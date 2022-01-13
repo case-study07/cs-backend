@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:css": "postcss styles/main.css -o assets/main_browser.css "
+    "build:css": "postcss assets/main.css -o assets/main_browser.css "
   },
   "dependencies": {
     "axios": "^0.24.0",

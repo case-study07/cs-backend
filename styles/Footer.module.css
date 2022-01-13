@@ -1,0 +1,3 @@
+.footerBar {
+  @apply bg-footer-color text-center p-8;
+}

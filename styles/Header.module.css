@@ -1,0 +1,25 @@
+/* headerナビゲーション */
+.headerColor {
+  @apply bg-header-color ;
+  color: white;
+}
+/* header 記述*/
+.headerBar {
+  @apply flex justify-between h-24 items-center w-5/6 mx-auto;
+
+  & > h1 {
+    @apply  text-2xl font-bold;
+  }
+}
+
+
+.headerNav {
+  @apply w-3/5;
+  &  ul {
+    @apply flex justify-between;
+    & > li {
+      @apply  text-xl;
+      list-style: none;
+    }
+  }
+}

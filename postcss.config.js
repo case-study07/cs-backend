@@ -4,9 +4,5 @@ module.exports = {
 
 // 出力テスト用
 // module.exports = {
-//     plugins: [
-//         require("tailwindcss"),
-//         require("autoprefixer"),
-//     ]
-
+//   plugins: [require("tailwindcss"), require("autoprefixer"),require('tailwindcss'),],
 // };
