@@ -1,3 +1,16 @@
+.head{
+  background-color:red;
+  
+  & > p{
+    color:white;
+     & > span{
+      color: green;
+       & > *{
+        color:blue;
+       }
+     }
+  }
+}
 .container {
   padding: 0 2rem;
 }

@@ -1,9 +1,5 @@
 module.exports = {
-    plugins: [
-        "tailwindcss",
-        "postcss-nesting",
-        "autoprefixer"
-    ],
+  plugins: ["tailwindcss", "postcss-nesting", "autoprefixer"],
 };
 
 // 出力テスト用
@@ -12,4 +8,5 @@ module.exports = {
 //         require("tailwindcss"),
 //         require("autoprefixer"),
 //     ]
+
 // };
