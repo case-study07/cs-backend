@@ -1,0 +1,6 @@
+
+
+.mainRoot {
+  @apply bg-main-color w-11/12 m-auto rounded-3xl my-5 py-8 px-3;
+}
+
