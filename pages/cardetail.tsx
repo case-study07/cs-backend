@@ -2,9 +2,9 @@ import { Layout } from "components/ui"
 import image from "next/image"
 import { FC, ReactElement, ReactNode } from "react"
 
-export default function CarDetail() :ReactElement {
+export default function CarDetail() :ReactNode{
     return (
-        <>
+        <div>
             <div className="mainHeaders">
   
         <div className="searchBar">
@@ -66,16 +66,17 @@ export default function CarDetail() :ReactElement {
           <div>
             <img className="carImage" src="../img/Featured image.png" alt="" />
             <div className="carOthers">
-              <Image src="../public/img/Featured image.png" alt="" />
-              <Image src="../img/Featured image.png" alt="" />
-              <Image src="../img/Featured image.png" alt="" />
-              <Image src="../img/Featured image.png" alt="" />
+              <img src="../public/img/Featured image.png" alt="" />
             </div>
           </div>
           <dl className="auctionAndAmount">
             <div>
               <dt>出品オークション</dt>
-              <dd><a href=""><Image src="../img/86label.png" alt="オークションラベル"></a></dd>
+                <dd>
+                  <a href="">
+                  <img src="../img/86label.png" alt="オークションラベル" />
+                </a>
+                </dd>
             </div>
             <div>
               <dt>初期金額</dt>
@@ -181,25 +182,25 @@ export default function CarDetail() :ReactElement {
                   </tr>
                   <tr>
                     <th>車検</th>
-                    <td colspan="3">
-                      車検残:無<br>
-                      車検の取得にあたって法定費用が必要となります。<br>
-                      車検整備無<br>
-                      車検整備(法定24ヶ月定期点検整備/商用車は12ヶ月)を実施しません。<br>
+                    <td >
+                      車検残:無<br/>
+                      車検の取得にあたって法定費用が必要となります。<br/>
+                      車検整備無<br/>
+                      車検整備(法定24ヶ月定期点検整備/商用車は12ヶ月)を実施しません。<br/>
                       購入後(車検取得後)に別途、車検整備を実施してください
                     </td>
                   </tr>
                   <tr>
                     <th>法廷整備</th>
-                    <td colspan="3">
-                      法定整備無<br>
+                    <td >
+                      法定整備無<br/>
                       車両の状態については販売店位ご確認ください
                     </td>
                   </tr>
                   <tr>
                     <th>保障</th>
-                    <td colspan="3">
-                      保障無<br>
+                    <td >
+                      保障無<br/>
                       無償・有償保障とも無となります。
                     </td>
                   </tr>
@@ -208,7 +209,7 @@ export default function CarDetail() :ReactElement {
           </article>
       </div>
     </div>
-    </>
+  
     )
 }
 
