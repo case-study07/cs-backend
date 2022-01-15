@@ -1,11 +1,9 @@
-
-import { ReactNode } from "react";
 import { Layout } from "../components/ui/";
 
-export default function Auction():ReactNode {
+export default function Auction() {
     return (
         <>
-            <div className="auction">
+                 <div className="auction">
 
         <nav className="pankuzu">
           <p><a href="./index.html">Top</a></p>
@@ -111,8 +109,7 @@ export default function Auction():ReactNode {
                   <th>ギア</th>
                   <td>6速</td>
                 </tr>
-            </table>
-                        
+              </table>
               <table>
                 <tr>
                   <th>エアコン</th>
@@ -178,8 +175,7 @@ export default function Auction():ReactNode {
             </div>
         </article>
       </div>
-    </>
-    );
-};
-
+        </>
+    )
+}
 Auction.Layout = Layout;
