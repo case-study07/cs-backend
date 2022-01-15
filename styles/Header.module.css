@@ -1,7 +1,6 @@
 /* headerナビゲーション */
 .headerColor {
-  @apply bg-header-color ;
-  color: white;
+  @apply bg-header-color text-white;
 }
 /* header 記述*/
 .headerBar {
