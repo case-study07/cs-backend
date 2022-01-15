@@ -1,6 +1,6 @@
 import { Layout } from "components/ui";
 
-export default function carEntry() {
+export default function CarEntry() {
     return (
         <div>
                     <article>
@@ -203,4 +203,4 @@ export default function carEntry() {
         </div>
     )
 }
-carEntry.Layout = Layout;
+CarEntry.Layout = Layout;
