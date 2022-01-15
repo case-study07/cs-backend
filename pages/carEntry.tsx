@@ -1,4 +1,6 @@
-export default function adminCarList() {
+import { Layout } from "components/ui";
+
+export default function carEntry() {
     return (
         <div>
                     <article>
@@ -201,3 +203,4 @@ export default function adminCarList() {
         </div>
     )
 }
+carEntry.Layout = Layout;

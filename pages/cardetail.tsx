@@ -1,8 +1,8 @@
 import { Layout } from "components/ui"
 import image from "next/image"
-import { FC, ReactElement, ReactNode } from "react"
+import { ReactNode } from "react"
 
-export default function CarDetail() :ReactNode{
+export default function CarDetail():ReactNode{
     return (
         <div>
             <div className="mainHeaders">
