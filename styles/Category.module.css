@@ -1,0 +1,39 @@
+.searchBar {
+  @apply col-start-1 col-end-13 row-start-1 row-end-2 w-11/12 m-auto;
+
+  & > button {
+    @apply bg-black text-white rounded-xl  w-1/6 h-14 mx-3 my-10;
+  }
+
+  & > input {
+    @apply rounded-xl w-4/6 h-16 mr-8 my-10;
+  }
+}
+
+/* searchItems */
+.searchTitles {
+  @apply w-11/12  mx-auto my-4 justify-around col-start-4 col-end-10 row-start-2 row-end-3 mb-0 ;
+  & > ul {
+    @apply flex justify-around bg-white p-4 pb-0;
+  }
+}
+
+.categoryLabel{
+  @apply bg-white pb-2  w-11/12 mx-auto;
+
+  & .searchItems{
+    @apply  my-4 flex justify-around mt-0 py-3 mx-10 bg-category-color ;
+
+    & > ul {
+      @apply pb-0;
+    }
+
+    & li{
+      @apply text-link-color
+    }
+  }
+}
+.categoryTagColor{
+  @apply bg-category-color p-2  ;
+}
+/* searchItems ここまで */
