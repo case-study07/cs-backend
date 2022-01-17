@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import Link from "next/link";
 
 import {Layout} from "../components/ui/"
-import{ CarLabelCard }from "../components/Card/";
+import { CarLabelCard } from "components/Card";
 
 export default function Home (): ReactNode   {
 
@@ -84,7 +84,11 @@ export default function Home (): ReactNode   {
       <article className={s.carDetailLabel}>
         <h2>オークション出展LINEUP</h2>
 
-        <CarLabelCard />
+        {/* <!-- carDetail --> */}
+
+
+  <CarLabelCard />
+
 
 
         <div className={s.pager}>
