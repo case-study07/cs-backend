@@ -62,16 +62,6 @@
 /* carDetailCardの例あると */
 .carDetailLabel {
   @apply py-4  bg-white my-5;
-
-  & > .carDetailCard {
-    @apply border-solid border-2 border-gray-300  bg-white rounded-lg p-2 m-2;
-    & table{
-        width: 100%;
-    }
-    & td {
-        text-align: center;
-    }
-  }
 }
 
 .pager {
