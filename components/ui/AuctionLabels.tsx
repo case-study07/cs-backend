@@ -36,7 +36,6 @@ const AuctionLabels = () => {
           </div>
         </div>
       </a>
-
     </div>
   );
 };
