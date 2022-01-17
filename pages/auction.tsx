@@ -1,11 +1,12 @@
 import { Layout } from "../components/ui/";
+import a from '../styles/auction.module.css'
 
 export default function Auction() {
     return (
         <>
-                 <div className="auction">
+                 <div className={a.auction}>
 
-        <nav className="pankuzu">
+        <nav className={a.pankuzu}>
           <p><a href="./index.html">Top</a></p>
           <p>{`>>`}</p>
           <p><a href="./auctionlist.html">オークション一覧</a></p>
@@ -13,12 +14,12 @@ export default function Auction() {
           <p>出品商品</p>
         </nav>
 
-        <article className="auctionInfo">
-          <a className="schedule" href="">予定表一覧</a>
+        <article className={a.auctionInfo}>
+          <a className={a.schedule} href="">予定表一覧</a>
           <h2>トヨタ86セレクション</h2>
-            <p className="carName">日産スカイライン 3.0 GT タイプSP</p>
-          <div className="bid">
-            <div className="carImage">
+            <p className={a.carName}>日産スカイライン 3.0 GT タイプSP</p>
+          <div className={a.bid}>
+            <div className={a.carImage}>
               <img src="../img/Featured image.png" alt="" />
               <div>
                 <img src="../img/Featured image.png" alt="" />
@@ -28,7 +29,7 @@ export default function Auction() {
               </div>
             </div>
             
-            <div>
+            <div className={a.rightColum}>
               <dl>
                 <div>
                   <dt>入札件数</dt>
@@ -41,19 +42,23 @@ export default function Auction() {
                 </div>
               </dl>
               
-              <div className="bidForm">
-                <p>現在価格</p>
-                <p>4,000,000円</p>
-                <label htmlFor="">入札価格</label>
-                <input type="number" name="" id="" value="4000000" />
-                <button>入札する</button>
+              <div className={a.bidForm}>
+                <div>
+                  <p>現在価格</p>
+                  <p>4,000,000円</p>
+                </div>
+                <div>
+                  <label htmlFor="">入札価格</label><br />
+                  <input type="number" name="" id="" min={4000000} />
+                  <button>入札する</button>
+                </div>
               </div>
             </div>
           </div>
           </article>
-          <article className="basic">
+          <article className={a.basic}>
             <h2>基本詳細</h2>
-            <div className="tables">
+            <div className={a.tables}>
               <table>
                 <tr>
                   <th>型式</th>
@@ -149,25 +154,25 @@ export default function Auction() {
                 </tr>
                 <tr>
                   <th>車検</th>
-                  <td >
-                    車検残:無<br/>
-                    車検の取得にあたって法定費用が必要となります。<br/>
-                    車検整備無<br/>
-                    車検整備(法定24ヶ月定期点検整備/商用車は12ヶ月)を実施しません。<br/>
+                  <td colSpan={3}>
+                    車検残:無<br />
+                    車検の取得にあたって法定費用が必要となります。<br />
+                    車検整備無<br />
+                    車検整備(法定24ヶ月定期点検整備/商用車は12ヶ月)を実施しません。<br />
                     購入後(車検取得後)に別途、車検整備を実施してください
                   </td>
                 </tr>
                 <tr>
                   <th>法廷整備</th>
-                  <td >
-                    法定整備無<br/>
+                  <td colSpan={3}>
+                    法定整備無<br />
                     車両の状態については販売店位ご確認ください
                   </td>
                 </tr>
                 <tr>
                   <th>保障</th>
-                  <td >
-                    保障無<br/>
+                  <td colSpan={3}>
+                    保障無<br />
                     無償・有償保障とも無となります。
                   </td>
                 </tr>
