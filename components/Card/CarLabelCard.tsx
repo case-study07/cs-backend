@@ -1,7 +1,8 @@
 import s from "../../styles/CarLabelCard.module.css";
 import Link from "next/link";
+import { ReactNode } from "react";
 
-const CarLabelCard = () => {
+const CarLabelCard = ()=> {
   return (
     <div>
       <div className={s.carDetailCard}>
