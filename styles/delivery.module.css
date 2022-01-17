@@ -1,0 +1,96 @@
+.delivery{
+    width: 95%;
+    @apply bg-white mx-auto pb-8;
+}
+
+.pankuzu{
+    @apply flex gap-2 text-2xl ml-10  pt-5 mb-12;
+
+    & a{
+        @apply underline text-link-color
+    }
+}
+
+.deliveryForm{
+    @apply w-4/6 mx-auto;
+
+    & h2{
+        @apply text-5xl mb-20
+    }
+
+    & label{
+        @apply text-4xl
+    }
+
+    & form > div{
+        @apply flex justify-between mb-9;
+
+        & select{
+            background-color: #F9FAFE;
+            border :2px solid #F2F4F8;
+            @apply w-3/6
+        }
+
+        & p{
+            @apply text-4xl;
+        }
+
+        &:last-of-type p{
+            @apply text-6xl border-b-2 border-black;
+        }
+
+        & > div{
+            @apply flex w-2/6 justify-between;
+
+            & div{
+                @apply  flex items-center w-3/6
+            }
+        }
+    } 
+
+    & input[type="submit"]{
+        @apply  text-white block mx-auto w-3/12 h-10 rounded-xl mb-20;
+        background-color: #F96627;
+    }
+}
+
+.carName{
+    @apply flex justify-center text-4xl mb-8
+}
+.carImage{
+    @apply w-full mb-5;
+
+    & img{
+        @apply w-4/5
+    }
+}
+.carOthers{
+    @apply flex justify-between mb-12
+}
+
+.basic h2{
+    @apply flex justify-around text-2xl mt-8
+}
+.tables{
+    @apply w-full flex justify-around items-start;
+
+    & table{
+        width: 40%;
+
+        & tr{
+            @apply border-b-2
+        }
+
+        & th{
+            @apply text-lg;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        & td{
+            @apply text-sm;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+}
+
