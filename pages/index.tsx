@@ -2,11 +2,11 @@ import s from "../styles/main.module.css";
 import { ReactNode } from "react";
 import Link from "next/link";
 
+
 import {Layout} from "../components/ui/"
 import { CarLabelCard } from "components/Card";
 
-export default function Home (): ReactNode   {
-
+export default function Home(): ReactNode {
   return (
     <>
       <div className={s.mainHeaders}>
@@ -14,50 +14,181 @@ export default function Home (): ReactNode   {
           <input type="text" value="キーワード" />
           <button>Search</button>
         </div>
-        <nav className={s.searchItems}>
+        <nav className={s.searchTitles}>
           <ul>
-            <li>
-              <select name="" id="">
-                <option>車体名</option>
-              </select>
-            </li>
-            <li>
-              <select name="" id="">
-                <option>乗車人数</option>
-              </select>
-            </li>
-            <li>
-              <select name="" id="">
-                <option>走行距離</option>
-              </select>
-            </li>
-            <li>
-              <select name="" id="">
-                <option>ボディタイプ</option>
-              </select>
-            </li>
-            <li>
-              <select name="" id="">
-                <option>メーカー</option>
-              </select>
-            </li>
-            <li>
-              <select name="" id="">
-                <option>年式</option>
-              </select>
-            </li>
-            <li>
-              <select name="" id="">
-                <option>排気量</option>
-              </select>
-            </li>
-            <li>
-              <select name="" id="">
-                <option>価格</option>
-              </select>
-            </li>
+            <li className={s.categoryTagColor}>車体名</li>
+            <li>乗車人数</li>
+            <li>走行距離</li>
+            <li>ボディタイプ</li>
+            <li>メーカー</li>
+            <li>年式</li>
+            <li>排気量</li>
+            <li>価格</li>
           </ul>
         </nav>
+
+        <div className={s.categoryLabel}>
+          <ul className={s.searchItems}>
+            <li>
+              <p>
+                <a href="">あ</a>
+              </p>
+              <p>
+                <a href="">い</a>
+              </p>
+              <p>
+                <a href="">う</a>
+              </p>
+              <p>
+                <a href="">え</a>
+              </p>
+              <p>
+                <a href="">お</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="">か</a>
+              </p>
+              <p>
+                <a href="">き</a>
+              </p>
+              <p>
+                <a href="">く</a>
+              </p>
+              <p>
+                <a href="">け</a>
+              </p>
+              <p>
+                <a href="">こ</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="">さ</a>
+              </p>
+              <p>
+                <a href="">し</a>
+              </p>
+              <p>
+                <a href="">す</a>
+              </p>
+              <p>
+                <a href="">せ</a>
+              </p>
+              <p>
+                <a href="">そ</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="">た</a>
+              </p>
+              <p>
+                <a href="">ち</a>
+              </p>
+              <p>
+                <a href="">つ</a>
+              </p>
+              <p>
+                <a href="">て</a>
+              </p>
+              <p>
+                <a href="">と</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="">な</a>
+              </p>
+              <p>
+                <a href="">に</a>
+              </p>
+              <p>
+                <a href="">ぬ</a>
+              </p>
+              <p>
+                <a href="">ね</a>
+              </p>
+              <p>
+                <a href="">の</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="">は</a>
+              </p>
+              <p>
+                <a href="">ひ</a>
+              </p>
+              <p>
+                <a href="">ふ</a>
+              </p>
+              <p>
+                <a href="">へ</a>
+              </p>
+              <p>
+                <a href="">ほ</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="">ま</a>
+              </p>
+              <p>
+                <a href="">み</a>
+              </p>
+              <p>
+                <a href="">む</a>
+              </p>
+              <p>
+                <a href="">め</a>
+              </p>
+              <p>
+                <a href="">も</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="">や</a>
+              </p>
+              <p>
+                <a href="">ゆ</a>
+              </p>
+              <p>
+                <a href="">よ</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="">ら</a>
+              </p>
+              <p>
+                <a href="">り</a>
+              </p>
+              <p>
+                <a href="">る</a>
+              </p>
+              <p>
+                <a href="">れ</a>
+              </p>
+              <p>
+                <a href="">ろ</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="">わ</a>
+              </p>
+              <p>
+                <a href="">を</a>
+              </p>
+              <p>
+                <a href="">ん</a>
+              </p>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <article className={s.auctionLabel}>
@@ -107,6 +238,6 @@ export default function Home (): ReactNode   {
       </article>
     </>
   );
-};
+}
 
 Home.Layout = Layout;
