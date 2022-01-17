@@ -1,0 +1,13 @@
+.root {
+    @apply  flex items-center  mx-0 ;
+    width:320px
+    & .ItemImage{
+        order: 2;
+    }
+    & .text{
+        & >* {
+            @apply  p-2 text-white ;
+        };
+    }
+}
+
