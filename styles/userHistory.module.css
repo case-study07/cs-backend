@@ -1,0 +1,36 @@
+.root{
+    @apply bg-white rounded-xl p-10;
+
+    & h2{
+        @apply text-center text-3xl;
+    }
+    & p{
+        @apply text-2xl;
+    }
+
+    & table {
+        @apply w-11/12 m-auto;
+
+        & thead {
+            @apply bg-gray-100 border-b-2 border-gray-200 ;
+        }
+
+        & tbody{
+            @apply border-b-2 border-gray-200;
+
+            & td{
+                @apply p-4 text-center border-b-2;
+            }
+        }
+    }
+}
+
+
+.btnRoot{
+    @apply text-right my-8;
+    & .backButton {
+        @apply bg-gray-200 text-gray-700 p-4 rounded-lg w-3/12 text-center  cursor-pointer;
+    }
+        
+        
+}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useCountTimer } from "components/hooks";
+import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import { ReactElement, useState } from "react";
 import useSWR from "swr";
@@ -11,8 +12,10 @@ interface Auction {
   name:string
 }
 
-export default function Auction():ReactElement {
 
+
+export default function Auction(): ReactElement {
+  
   // カウントダウンタイマー
   const { days, hours, minutes, seconds, isActive } = useCountTimer();
   const [money, setMoney] = useState(4000000);
@@ -53,6 +56,8 @@ export default function Auction():ReactElement {
         ;
       };
   
+  
+
 
 
 // data フェッチしていない場合
@@ -105,7 +110,9 @@ export default function Auction():ReactElement {
                     <dt>入札件数</dt>
                     <dd>{data.length}</dd>
                     <dd>
-                      <a href="">入札履歴</a>
+                      <Link href="/userHistory">
+                        <a>入札履歴</a>
+                      </Link>
                     </dd>
                   </div>
                   <div>
