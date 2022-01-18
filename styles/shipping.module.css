@@ -1,0 +1,107 @@
+.shipping{
+    width: 95%;
+    @apply bg-white mx-auto pb-8;
+}
+.pankuzu{
+    @apply flex gap-2 text-2xl ml-10  pt-5 mb-12;
+
+    & a{
+        @apply underline text-link-color
+    }
+}
+
+.title{
+    @apply text-4xl ml-10;
+}
+
+.shippingSitu{
+    @apply flex justify-between mx-auto;
+    border: 1px solid blue;
+    width: 95%;
+
+    & li{
+        background-color: #abc;
+        border-radius: 50%;
+        @apply w-1/5;
+        /* border: 1px solid red; */
+        
+        &:nth-of-type(1){
+            border: 1px solid aqua;
+        }
+
+        &:nth-of-type(1)::after{
+            content: "";
+            width: 6.66666%;
+            border: 5px solid red;
+        }
+
+        & div{
+            width: 100%;
+            padding-top: calc(50% - 0.5rem);
+            padding-bottom: 50%;
+            /* border: 2px solid olivedrab; */
+            text-align: center;
+            
+        }
+
+        & p{
+            border: 1px solid blue;
+
+        }
+    }
+
+    /* & li{
+        vertical-align: 50%;
+        border-radius: 50%;
+        background-color: #abcdef;
+        border: 1px solid red;
+        @apply w-1/5 text-center;
+    } */
+
+    /* & li:before{
+        content: "";
+        display: block;
+        padding-top: calc(100% - 1rem);
+        border: 1px solid darkmagenta;
+    } */
+}
+
+.carName{
+    @apply flex justify-center text-4xl mb-8
+}
+.carImage{
+    @apply w-full mb-5;
+
+    & img{
+        @apply w-4/5
+    }
+}
+.carOthers{
+    @apply flex justify-between mb-12
+}
+
+.basic h2{
+    @apply flex justify-around text-2xl mt-8
+}
+.tables{
+    @apply w-full flex justify-around items-start;
+
+    & table{
+        width: 40%;
+
+        & tr{
+            @apply border-b-2
+        }
+
+        & th{
+            @apply text-lg;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        & td{
+            @apply text-sm;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+}
