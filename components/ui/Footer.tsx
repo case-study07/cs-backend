@@ -1,6 +1,7 @@
+import { FC } from "react";
 import s from "../../styles/Footer.module.css";
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
     <>
       <footer className={s.footerBar}>

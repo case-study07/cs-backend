@@ -3,37 +3,23 @@ import { ReactNode } from "react";
 import Link from "next/link";
 
 
-import {Layout} from "../components/ui/"
+import {AuctionLabels, Layout} from "../components/ui/"
 import { CarLabelCard } from "components/Card";
 import {Category} from "components/common/";
 
 export default function Home(): ReactNode {
   return (
     <>
-
-
       <Category />
-
-
 
       <article className={s.auctionLabel}>
         <h2>オークションLINEUP</h2>
         <Link href="/" passHref>
           <a>オークション一覧へ{`>>`}</a>
         </Link>
-        <div>
-          <Link href="/" passHref>
-            <a>
-              <img src="../img/86label.png" alt="オークションアイコン" />
-            </a>
-          </Link>
-          <Link href="/" passHref>
-            <a>
-              <img src="../img/lightcar.png" alt="オークションアイコン" />
-            </a>
-          </Link>
-        </div>
+        <AuctionLabels />
       </article>
+
       {/* <!-- ここまで --> */}
 
       {/* <!-- carDetail --> */}
@@ -41,10 +27,7 @@ export default function Home(): ReactNode {
         <h2>オークション出展LINEUP</h2>
         {/* <!-- carDetail --> */}
 
-
-  <CarLabelCard />
-
-
+        <CarLabelCard />
 
         <div className={s.pager}>
           <p>全1,560</p>
