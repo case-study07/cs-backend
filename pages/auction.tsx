@@ -1,60 +1,145 @@
+import axios from "axios";
+import { useCountTimer } from "components/hooks";
+import Link from "next/link";
+import { ReactElement, useState } from "react";
+import useSWR from "swr";
 import { Layout } from "../components/ui/";
 import a from '../styles/auction.module.css'
 
-export default function Auction() {
+interface Auction {
+  id:number
+  name:string
+}
+
+export default function Auction():ReactElement {
+
+  // カウントダウンタイマー
+  const { days, hours, minutes, seconds, isActive } = useCountTimer();
+  const [money, setMoney] = useState(4000000);
+
+// data　オークションデータ　フェッチ
+    const { data } = useSWR(
+      "http://localhost:9000/auction-color",
+      (url: string) => axios(url).then((res) => res.data),
+      { refreshInterval: 1000 }
+    );
+  
+  
+    const fetchAPI = async () => {
+      await fetch("http://localhost:9000/auction-color", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name:money,
+        }),
+      });
+    };
+
+  const getDataApi = (data: Auction[]) => {
+    let money: number[] = [];
+    data.map((item: Auction) => {
+        money.push(Number(item.name))
+    });
+    let MaxMoney = Math.max(...money);
+    return MaxMoney
+
+    }
+  
+      const buttonHandler = () => {
+        money;
+        fetchAPI();
+        ;
+      };
+  
+
+
+// data フェッチしていない場合
+    if (!data) {
+      return (
+        <div>
+          <Link href="/" passHref>
+            <a>isLoading....</a>
+          </Link>
+        </div>
+      );
+    }
+
+
     return (
-        <>
-                 <div className={a.auction}>
+      <>
+        <div className={a.auction}>
+          <nav className={a.pankuzu}>
+            <p>
+              <a href="./index.html">Top</a>
+            </p>
+            <p>{`>>`}</p>
+            <p>
+              <a href="./auctionlist.html">オークション一覧</a>
+            </p>
+            <p>{`>>`}</p>
+            <p>出品商品</p>
+          </nav>
 
-        <nav className={a.pankuzu}>
-          <p><a href="./index.html">Top</a></p>
-          <p>{`>>`}</p>
-          <p><a href="./auctionlist.html">オークション一覧</a></p>
-          <p>{`>>`}</p>
-          <p>出品商品</p>
-        </nav>
-
-        <article className={a.auctionInfo}>
-          <a className={a.schedule} href="">予定表一覧</a>
-          <h2>トヨタ86セレクション</h2>
+          <article className={a.auctionInfo}>
+            <a className={a.schedule} href="">
+              予定表一覧
+            </a>
+            <h2>トヨタ86セレクション</h2>
             <p className={a.carName}>日産スカイライン 3.0 GT タイプSP</p>
-          <div className={a.bid}>
-            <div className={a.carImage}>
-              <img src="../img/Featured image.png" alt="" />
-              <div>
+            <div className={a.bid}>
+              <div className={a.carImage}>
                 <img src="../img/Featured image.png" alt="" />
-                <img src="../img/Featured image.png" alt="" />
-                <img src="../img/Featured image.png" alt="" />
-                <img src="../img/Featured image.png" alt="" />
-              </div>
-            </div>
-            
-            <div className={a.rightColum}>
-              <dl>
                 <div>
-                  <dt>入札件数</dt>
-                  <dd>17</dd>
-                  <dd><a href="">入札履歴</a></dd>
-                </div>
-                <div>
-                  <dt>残り時間</dt>
-                  <dd>3分00秒</dd>
-                </div>
-              </dl>
-              
-              <div className={a.bidForm}>
-                <div>
-                  <p>現在価格</p>
-                  <p>4,000,000円</p>
-                </div>
-                <div>
-                  <label htmlFor="">入札価格</label><br />
-                  <input type="number" name="" id="" min={4000000} />
-                  <button>入札する</button>
+                  <img src="../img/Featured image.png" alt="" />
+                  <img src="../img/Featured image.png" alt="" />
+                  <img src="../img/Featured image.png" alt="" />
+                  <img src="../img/Featured image.png" alt="" />
                 </div>
               </div>
+
+              <div className={a.rightColum}>
+                <dl>
+                  <div>
+                    <dt>入札件数</dt>
+                    <dd>{data.length}</dd>
+                    <dd>
+                      <a href="">入札履歴</a>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>残り時間</dt>
+                    {isActive ? (
+                      <dd>オークションは終了しました。</dd>
+                    ) : (
+                      <dd>
+                        {minutes}分{seconds}秒
+                      </dd>
+                    )}
+                  </div>
+                </dl>
+
+                <div className={a.bidForm}>
+                  <div>
+                    <p>現在価格</p>
+                    <p>{getDataApi(data)}円</p>
+                  </div>
+                  <div>
+                    <label htmlFor="">入札価格</label>
+                    <br />
+                    <input
+                      type="number"
+                      name=""
+                      id=""
+                      value={money}
+                      onChange={(e) => setMoney(Number(e.target.value))}
+                    />
+                    <button onClick={buttonHandler}>入札する</button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
           </article>
           <article className={a.basic}>
             <h2>基本詳細</h2>
@@ -155,32 +240,38 @@ export default function Auction() {
                 <tr>
                   <th>車検</th>
                   <td colSpan={3}>
-                    車検残:無<br />
-                    車検の取得にあたって法定費用が必要となります。<br />
-                    車検整備無<br />
-                    車検整備(法定24ヶ月定期点検整備/商用車は12ヶ月)を実施しません。<br />
+                    車検残:無
+                    <br />
+                    車検の取得にあたって法定費用が必要となります。
+                    <br />
+                    車検整備無
+                    <br />
+                    車検整備(法定24ヶ月定期点検整備/商用車は12ヶ月)を実施しません。
+                    <br />
                     購入後(車検取得後)に別途、車検整備を実施してください
                   </td>
                 </tr>
                 <tr>
                   <th>法廷整備</th>
                   <td colSpan={3}>
-                    法定整備無<br />
+                    法定整備無
+                    <br />
                     車両の状態については販売店位ご確認ください
                   </td>
                 </tr>
                 <tr>
                   <th>保障</th>
                   <td colSpan={3}>
-                    保障無<br />
+                    保障無
+                    <br />
                     無償・有償保障とも無となります。
                   </td>
                 </tr>
               </table>
             </div>
-        </article>
-      </div>
-        </>
-    )
+          </article>
+        </div>
+      </>
+    );
 }
 Auction.Layout = Layout;
