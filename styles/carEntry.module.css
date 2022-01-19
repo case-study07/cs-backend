@@ -1,0 +1,77 @@
+.carEntry{
+    @apply w-11/12 bg-white mx-auto pb-20 pt-10;
+
+    & h2{
+        @apply text-4xl ml-10
+    }
+
+    & article > p{
+        @apply text-2xl ml-10 mt-5;
+    }
+
+    & h3{
+        @apply text-3xl flex justify-center mt-9 mb-9;
+    }
+
+    & input[type="submit"]{
+        @apply  text-white block mx-auto w-2/12 h-10 rounded-xl mt-20;
+        background-color: #F96627;
+    }
+}
+
+.icon{
+    @apply w-4/6 mx-auto flex justify-between;
+
+    &div div{
+        @apply w-1/6;
+
+        & p{
+            @apply mt-2;
+        }
+    }
+
+    & label{
+        background-color: #E1CECE;
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    & input[type="file"]{
+        opacity:0;
+        appearance: none;
+        position: absolute;
+    }
+}
+
+.table{
+    @apply w-5/6 mx-auto;
+
+    & tr{
+        @apply border-b-2
+    }
+
+    & th{
+        @apply text-lg;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    & td{
+    }
+    & input[type="text"]{
+        width: 100%;
+        border: 1px solid #D0D4D9;
+    }
+
+    & textarea{
+        border: 1px solid #D0D4D9;
+        resize: none;
+        @apply w-full h-3/4 mt-2;
+    }
+}
+.tdRadio{
+    /* text-align: center; */
+    @apply flex justify-center gap-x-5 items-center;
+}
