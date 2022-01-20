@@ -1,0 +1,27 @@
+.signUpCompany{
+    @apply bg-white w-1/2 mx-auto pt-10 pb-10 rounded;
+
+    & h2{
+        @apply text-center text-2xl mb-5;
+    }
+
+    & form{
+        
+
+        & div{
+            @apply mx-auto w-1/2 mb-5;
+
+            & input{
+                border: 1px solid #D0D4D9;
+                @apply w-full h-8 rounded;
+            }
+        }
+
+        & input[type="submit"]{
+            background-color: #41C767;
+            display: block;
+            padding: 5px;
+            @apply mx-auto rounded;
+        }
+    }
+}
