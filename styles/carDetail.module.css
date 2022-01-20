@@ -1,0 +1,79 @@
+.carDetail{
+    @apply bg-white mx-auto;
+
+    & a{
+        @apply underline text-link-color;
+    }
+
+    & h3{
+        @apply flex justify-around text-2xl mt-8;
+    }
+}
+.carDetail{
+    width: 95%;
+}
+.pankuzu{
+    @apply flex gap-2 text-2xl ml-10  pt-5 mb-12
+}
+
+.carName{
+    @apply flex justify-center text-4xl mb-8
+}
+.carImage{
+    @apply w-full mb-5
+}
+.carOthers{
+    @apply flex justify-around mb-12
+}
+.carImage img{
+    @apply w-4/5
+}
+.auctionAndAmount{
+    @apply flex justify-around
+}
+.auctionAndAmount div{
+    @apply w-2/5
+}
+.auctionAndAmount dt{
+    @apply text-4xl
+
+}
+.auctionAndAmount img{
+    @apply w-full
+}
+.auctionAndAmount div:nth-of-type(2) dd{
+    @apply text-center mt-12
+}
+.auctionAndAmount dd{
+    @apply text-4xl
+}
+.dl dt{
+    @apply float-left 
+}
+
+/* 基本情報 */
+.basic h2{
+    @apply flex justify-around text-2xl mt-8
+}
+.tables{
+    @apply w-full flex justify-around items-start;
+
+    & table{
+        width: 40%;
+
+        & tr{
+            @apply border-b-2
+        }
+
+        & th{
+            @apply text-lg;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        & td{
+            @apply text-sm;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+}
