@@ -7,7 +7,14 @@
     & table{
         width: 100%;
     }
-    & td {
+    & td{
         text-align: center;
+        font-size: 0.8rem;
+        
+    }
+    & th {
+        text-align: center;
+        font-size: 1rem;
+        width: 9%;
     }
   }
