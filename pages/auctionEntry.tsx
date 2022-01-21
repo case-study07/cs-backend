@@ -24,14 +24,12 @@ export default function auctionEntry(): ReactNode {
                     </div>
                     <div>
                         <div>
-                            <label htmlFor="">画像</label>
-                            <input type="file" name="" id="" />
+                            <label htmlFor="fromFile">画像</label><br />
+                            <input type="file" name="" id="fromFile" />
                         </div>
                         <div>
-                            <label htmlFor="">ラベル</label>
-                            <select name="" id="">
-                                <option value="">#fff073</option>
-                            </select>
+                            <label htmlFor="">ラベル</label><br />
+                            <input type="color" name="" id="" />
                         </div>
                     </div>
                 </div>
