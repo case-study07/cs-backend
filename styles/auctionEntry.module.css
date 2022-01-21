@@ -1,11 +1,27 @@
 .auctionEntry{
     width: 95%;
-    @apply bg-white mx-auto rounded;
+    @apply bg-white mx-auto rounded py-8;
+
+     & h2{
+         @apply text-3xl mb-5;
+     }
+
+     & a{
+         @apply underline text-link-color;
+     }
+
 
     & article{
         @apply w-4/5 mx-auto;
 
+        & form{
+            @apply mt-10;
+        }
+
         & form > div{
+
+            /* border: 1px solid red; */
+            @apply mb-5;
 
             & input {
                 @apply h-8;
@@ -18,13 +34,58 @@
         }
 
         & form > div:nth-of-type(3){
-            border: 1px solid red;
-            @apply flex;
+            @apply flex justify-between;
 
             & > div{
-                border:1px solid blue;
                 @apply w-2/5;
+
+                & > input{
+                    border: 1px solid #949494;
+                    @apply w-full rounded;
+                }
+
+                & > :nth-of-type(2){
+                    /* border: 1px solid deeppink; */
+                }
             }
+
+            & > div:nth-of-type(2){
+
+                & div:nth-of-type(1) {
+                    /* border: 1px solid red; */
+
+                    & label:nth-of-type(2){
+                        /* @apply form-label inline-block mb-2 text-gray-700; */
+                    }
+
+                    & input[type="file"]{
+                        @apply mb-5;
+                    }
+                }
+
+
+            }
+        }
+    }
+
+    & button:nth-of-type(1){
+        @apply p-2 bg-black text-white rounded-xl mb-5;
+    }
+
+    & button:nth-of-type(2){
+        background-color: #FF4D4F;
+        @apply py-2 px-10 rounded block mx-auto text-white mt-6;
+    }
+
+    & table{
+        @apply w-full;
+
+        & img{
+            @apply mx-auto;
+        }
+
+        & tr{
+            @apply border-b-2;
         }
     }
 }
