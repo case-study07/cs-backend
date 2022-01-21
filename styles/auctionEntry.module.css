@@ -1,0 +1,30 @@
+.auctionEntry{
+    width: 95%;
+    @apply bg-white mx-auto rounded;
+
+    & article{
+        @apply w-4/5 mx-auto;
+
+        & form > div{
+
+            & input {
+                @apply h-8;
+            }
+
+            & > input{
+                border: 1px solid #949494;
+                @apply rounded w-full;
+            }
+        }
+
+        & form > div:nth-of-type(3){
+            border: 1px solid red;
+            @apply flex;
+
+            & > div{
+                border:1px solid blue;
+                @apply w-2/5;
+            }
+        }
+    }
+}
