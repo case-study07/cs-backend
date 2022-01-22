@@ -26,7 +26,12 @@ const Category = ():ReactElement=> {
   return (
     <div className={s.mainHeaders}>
       <div className={s.searchBar}>
-        <input type="text" value="キーワード" />
+
+        <input
+          type="text"
+          value="キーワード"
+          onChange={(e) => setQuery(e.target.value)}
+        />
         <button>Search</button>
       </div>
       <nav className={s.searchTitles}>

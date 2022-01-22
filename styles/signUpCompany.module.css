@@ -5,7 +5,7 @@
         @apply text-center text-2xl mb-5;
     }
 
-    & form{
+    & .form{
         
 
         & div{
@@ -24,4 +24,12 @@
             @apply mx-auto rounded;
         }
     }
+
+    & .link{
+        @apply text-center p-3;
+        & a{
+            @apply text-blue-500;
+        }
+    }
+
 }

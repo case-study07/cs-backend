@@ -9,6 +9,7 @@ const CarLabelCard = ()=> {
         <Link href="/" passHref>
           <a>
             <table>
+              <thead>
               <tr>
                 <th>画像</th>
                 <th>車種名</th>
@@ -21,7 +22,9 @@ const CarLabelCard = ()=> {
                 <th>車検有無</th>
                 <th>修復歴</th>
               </tr>
-              <tr>
+              </thead>
+              <tbody>
+                <tr>
                 <td>
                   <img
                     src="../img/Featured image.png"
@@ -38,6 +41,7 @@ const CarLabelCard = ()=> {
                 <td>2022年4月</td>
                 <td>あり</td>
               </tr>
+              </tbody>
             </table>
           </a>
         </Link>

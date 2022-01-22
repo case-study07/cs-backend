@@ -2,6 +2,7 @@
 import "../assets/main.css";
 import { AppProps } from "next/app";
 import { FC } from "react";
+import { CookiesProvider } from "react-cookie";
 
 const Noop: FC = ({ children }) => <>{children}</>;
 
@@ -12,8 +13,10 @@ function MyApp({
   const Layout = Component.Layout ?? Noop;
 
   return (
-      <Layout>
+    <Layout>
+        <CookiesProvider>
         <Component {...pageProps} />
+    </CookiesProvider>
       </Layout>
   );
 }
