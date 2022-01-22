@@ -1,8 +1,16 @@
+import axios from "axios";
 import { Layout } from "components/ui";
 import { ReactNode } from "react";
 import d from "styles/delivery.module.css";
 
-export default function Delivery() :ReactNode{
+
+
+export default function Delivery(): ReactNode{
+  
+
+
+
+
     return (
       <div className={d.delivery}>
         <nav>

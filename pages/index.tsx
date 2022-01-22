@@ -6,8 +6,15 @@ import Link from "next/link";
 import {AuctionLabels, Layout} from "../components/ui/"
 import { CarLabelCard } from "components/Card";
 import {Category} from "components/common/";
+import axios from "axios";
+
+
+
 
 export default function Home(): ReactNode {
+
+
+
   return (
     <>
       <Category />

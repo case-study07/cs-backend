@@ -1,12 +1,13 @@
 .login{
-    @apply bg-white w-1/2 mx-auto pt-10 pb-10 rounded;
+    @apply bg-white w-1/2  py-36 rounded-lg shadow-lg;
+    margin:5% auto;
 
     & h2{
         @apply text-center text-2xl mb-5;
     }
 
-    & form{
-        
+    & .forms{
+
 
         & div{
             @apply mx-auto w-1/2 mb-5;

@@ -5,7 +5,7 @@
         @apply text-center text-2xl mb-5;
     }
 
-    & form{
+    & .form{
         
 
         & div{
@@ -22,6 +22,19 @@
             display: block;
             padding: 5px;
             @apply mx-auto rounded;
+        }
+            & .link{
+        @apply text-center p-3;
+        & a{
+            @apply text-blue-500;
+        }
+    }
+    }
+
+        & .link{
+        @apply text-center p-3;
+        & a{
+            @apply text-blue-500;
         }
     }
 }
