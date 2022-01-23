@@ -2,7 +2,9 @@ import s from "../../styles/CarLabelCard.module.css";
 import Link from "next/link";
 import { ReactNode } from "react";
 
-const CarLabelCard = ()=> {
+const CarLabelCard = ({ carData }) => {
+
+
   return (
     <div>
       <div className={s.carDetailCard}>
@@ -25,6 +27,7 @@ const CarLabelCard = ()=> {
               </thead>
               <tbody>
                 <tr>
+
                 <td>
                   <img
                     src="../img/Featured image.png"

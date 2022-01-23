@@ -2,20 +2,18 @@ import axios from "axios";
 import { Layout } from "components/ui";
 import { useEffect, useState } from "react";
 import s from "../styles/login.module.css";
-import { useCookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 import { useRouter } from 'next/router'
 
 
 
-export default function LoginUpPerson() {
+export default function LoginUpPerson(props) {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [login, setLogin] = useState(false);
   const [cookies, setCookie] = useCookies();
-  const router = useRouter();
-
-  
+  const router = useRouter(); 
 
   const fetchAPI = async (userEmail:string,userPassword:string) => {
     const loginData = {
@@ -29,7 +27,7 @@ export default function LoginUpPerson() {
         );
       const data = await res.data;
 
-      setCookie(`id${data.member.id}`, data);
+      setCookie(`token`, data);
       return setLogin(true);
 
     } catch (error: any) {
@@ -51,7 +49,7 @@ export default function LoginUpPerson() {
       <article className={s.login}>
         <h2>ログイン</h2>
         <p>{errorMsg}</p>
-        <div className={s.forms}>
+        <form onClick={ e=>e.preventDefault()} className={s.forms}>
           <div>
             <label htmlFor="">メールアドレス</label>
             <input
@@ -72,10 +70,11 @@ export default function LoginUpPerson() {
           </div>
 
           <input type="submit" value="ログイン" onClick={handleSubmit} />
-        </div>
+        </form>
       </article>
     </>
   );
 }
 
 LoginUpPerson.Layout = Layout;
+

@@ -1,10 +1,12 @@
 import { Layout } from "components/ui";
 import { ReactNode } from "react";
+import { useCookies } from "react-cookie";
 import s from "../styles/profile.module.css";
 
-export default function Profile() :ReactNode{
-
-
+export default function Profile(): ReactNode{
+  const [cookies, setCookie] = useCookies();
+  const user = cookies.token.member;
+  
 
     return (
       <div className={s.profile}>
@@ -12,19 +14,19 @@ export default function Profile() :ReactNode{
           <dl>
             <div>
               <dt>氏名</dt>
-              <dd>春 太郎</dd>
+              <dd>{user.name}</dd>
             </div>
             <div>
               <dt>企業名</dt>
-              <dd>HALMOTOR</dd>
+              <dd>{user.companyName}</dd>
             </div>
             <div>
               <dt>電話番号</dt>
-              <dd>090-xxx-xxxx</dd>
+              <dd>{user.phoneNumber}</dd>
             </div>
             <div>
               <dt>メールアドレス</dt>
-              <dd>halxxx@hal.ac.jp</dd>
+              <dd>{user.email}</dd>
             </div>
           </dl>
         </article>

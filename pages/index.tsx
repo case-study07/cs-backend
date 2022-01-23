@@ -11,10 +11,9 @@ import axios from "axios";
 
 
 
-export default function Home(query: any): ReactNode {
-  const user = query.user;
+export default function Home({carData}): ReactNode {
 
-  console.log(user);
+
   
 
 
@@ -38,7 +37,7 @@ export default function Home(query: any): ReactNode {
         <h2>オークション出展LINEUP</h2>
         {/* <!-- carDetail --> */}
 
-        <CarLabelCard />
+        <CarLabelCard carData={carData} />
 
         <div className={s.pager}>
           <p>全1,560</p>
@@ -62,13 +61,12 @@ Home.Layout = Layout;
 
 
 
-// export async function getStaticProps() {
-//   const res = await axios.get(`http://localhost:9000/member`);
-//   const user = await res.data;
-  
-//   return {
-//     props: {
-//       user,
-//     }
-//   };
-// }
+export async function getServerSideProps(context) {
+  const res = await axios.get("http://localhost:9000/car-body-number");
+  const carData = await res.data
+  return {
+    props: {
+      carData
+    },
+  };
+}

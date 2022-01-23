@@ -14,8 +14,7 @@ const AuctionLabels = () => {
     <div className={s.root}>
       <AuctionListCard />
       <AuctionListCard />
-      <AuctionListCard />
-      <AuctionListCard />
+
     </div>
   );
 };

@@ -4,6 +4,8 @@ import { AppProps } from "next/app";
 import { FC, useState } from "react";
 import { CookiesProvider } from "react-cookie";
 import { createContext } from "react";
+import { Layout } from "components/ui";
+import axios from "axios";
 
 export const UserContext = createContext({})
 
@@ -29,3 +31,14 @@ function MyApp({
 }
 
 export default MyApp;
+
+
+export async function getServerSideProps(context) {
+  const res = await axios.get("http://localhost:9000/car-body-number");
+  const carData = await res.data;
+  return {
+    props: {
+      carData,
+    },
+  };
+}

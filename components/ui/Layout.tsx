@@ -10,7 +10,7 @@ const Layout: FC = ({ children }) => {
       <main className={s.mainRoot}>
         {children}
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
