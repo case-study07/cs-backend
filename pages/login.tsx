@@ -43,9 +43,7 @@ export default function LoginUpPerson() {
     if (login) {
      return router.push('/');
     }
-    setErrorMsg(
-      "ユーザーが存在しません メールアドレス もしくはパスワードがまちがっています"
-    );
+
   };
 
   return (
