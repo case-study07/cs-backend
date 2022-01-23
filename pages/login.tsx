@@ -3,9 +3,7 @@ import { Layout } from "components/ui";
 import { useEffect, useState } from "react";
 import s from "../styles/login.module.css";
 import { Cookies, useCookies } from "react-cookie";
-import { useRouter } from 'next/router'
-
-
+import { useRouter } from "next/router";
 
 export default function LoginUpPerson(props) {
   const [userEmail, setUserEmail] = useState("");
@@ -13,9 +11,9 @@ export default function LoginUpPerson(props) {
   const [errorMsg, setErrorMsg] = useState("");
   const [login, setLogin] = useState(false);
   const [cookies, setCookie] = useCookies();
-  const router = useRouter(); 
+  const router = useRouter();
 
-  const fetchAPI = async (userEmail:string,userPassword:string) => {
+  const fetchAPI = async (userEmail: string, userPassword: string) => {
     const loginData = {
       email: userEmail,
       password: userPassword,
@@ -24,24 +22,29 @@ export default function LoginUpPerson(props) {
       const res = await axios.post(
         "http://localhost:9000/auth/login",
         loginData
-        );
+      );
       const data = await res.data;
 
-      setCookie(`token`, data);
-      return setLogin(true);
+      if (!data) {
+        throw new Error("ログインデータの取得に失敗しました");
+      }
 
+      setCookie(`token`, data);
+      setLogin(true);
+
+      return true;
     } catch (error: any) {
       console.log(error.message);
     }
   };
 
-  const handleSubmit = (e: any) => {
-    fetchAPI(userEmail, userPassword);
-    console.log("aaaa");
-    if (login) {
-     return router.push('/');
+  const handleSubmit = async (e: any) => {
+    const res = await fetchAPI(userEmail, userPassword);
+    if (res) {
+      return router.push("/");
+    } else {
+      console.error("予期せぬエラー");
     }
-
   };
 
   return (
@@ -49,7 +52,7 @@ export default function LoginUpPerson(props) {
       <article className={s.login}>
         <h2>ログイン</h2>
         <p>{errorMsg}</p>
-        <form onClick={ e=>e.preventDefault()} className={s.forms}>
+        <form onClick={(e) => e.preventDefault()} className={s.forms}>
           <div>
             <label htmlFor="">メールアドレス</label>
             <input
@@ -77,4 +80,3 @@ export default function LoginUpPerson(props) {
 }
 
 LoginUpPerson.Layout = Layout;
-
