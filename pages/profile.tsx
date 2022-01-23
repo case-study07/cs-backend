@@ -1,27 +1,32 @@
 import { Layout } from "components/ui";
 import { ReactNode } from "react";
+import { useCookies } from "react-cookie";
 import s from "../styles/profile.module.css";
 
-export default function Profile() :ReactNode{
+export default function Profile(): ReactNode{
+  const [cookies, setCookie] = useCookies();
+  const user = cookies.token.member;
+  
+
     return (
       <div className={s.profile}>
         <article>
           <dl>
             <div>
               <dt>氏名</dt>
-              <dd>春 太郎</dd>
+              <dd>{user.name}</dd>
             </div>
             <div>
               <dt>企業名</dt>
-              <dd>HALMOTOR</dd>
+              <dd>{user.companyName}</dd>
             </div>
             <div>
               <dt>電話番号</dt>
-              <dd>090-xxx-xxxx</dd>
+              <dd>{user.phoneNumber}</dd>
             </div>
             <div>
               <dt>メールアドレス</dt>
-              <dd>halxxx@hal.ac.jp</dd>
+              <dd>{user.email}</dd>
             </div>
           </dl>
         </article>
@@ -42,6 +47,8 @@ export default function Profile() :ReactNode{
 
           <div>
             <table>
+              <thead>
+
               <tr>
                 <th>画像</th>
                 <th>車種名</th>
@@ -54,6 +61,9 @@ export default function Profile() :ReactNode{
                 <th>車検有無</th>
                 <th>修復歴</th>
               </tr>
+              </thead>
+              <tbody>
+
               <tr>
                 <td>
                   <img
@@ -71,6 +81,7 @@ export default function Profile() :ReactNode{
                 <td>2022年4月</td>
                 <td>あり</td>
               </tr>
+              </tbody>
             </table>
 
             <div className={s.pager}>

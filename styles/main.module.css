@@ -9,6 +9,7 @@
 
   & > div {
     @apply flex order-2 mx-auto w-11/12 ;
+    flex-wrap: wrap;
     & img {
       @apply w-full h-auto;
     }

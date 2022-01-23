@@ -1,6 +1,6 @@
 import { Layout } from "components/ui";
 import Link from "next/link";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 import s from "../styles/signUpCompany.module.css";
@@ -17,6 +17,7 @@ interface SignUpCompanyData {
 }
 
 export default function SignUpCompany(): ReactNode {
+
   const [name, setName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("adsf@asdf.com");
@@ -30,6 +31,7 @@ export default function SignUpCompany(): ReactNode {
   const [cookies, setCookie] = useCookies();
   const router = useRouter();
 
+
   const postApi = async (data: SignUpCompanyData) => {
     const url = "http://localhost:9000/auth/signup";
 
@@ -37,11 +39,12 @@ export default function SignUpCompany(): ReactNode {
       const res = await axios.post(url, data);
       const resData = await res.data;
       setCookie("token", resData);
-      console.log(resData);
+      // console.log(resData);
 
       setLogin(true);
     } catch (error: any) {
       console.log(error.message);
+      setErrorMsg("メールアドレスが既に登録されています");
     }
   };
 
@@ -58,12 +61,14 @@ export default function SignUpCompany(): ReactNode {
 
     postApi(signUpData);
   };
+
+
   useEffect(() => {
     if (password != confirmPassword) {
       return setErrorMsg("パスワードが一致しません");
     }
     if (login) {
-      router.push("/", cookies.token);
+       router.push("/", cookies.token);
     }
     handleSubmit();
   }, [login]);

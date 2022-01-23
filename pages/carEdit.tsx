@@ -1,13 +1,21 @@
 import { Layout } from "components/ui";
 import { ReactNode } from "react";
 
-export default function CarEdit() :ReactNode {
+export default function CarEdit(): ReactNode {
+    
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(e);
+        
+    }
+
     return (
         <div>
             <article>
             <h2 hidden>車登録</h2>
             <p>アイコン</p>
-            <form action="">
+            <form action="" onClick={handleSubmit}>
                 <input type="file" name="" id="" />
                 <input type="file" name="" id="" />
                 <input type="file" name="" id="" />

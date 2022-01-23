@@ -11,7 +11,10 @@ import axios from "axios";
 
 
 
-export default function Home(): ReactNode {
+export default function Home({carData}): ReactNode {
+
+
+  
 
 
 
@@ -21,7 +24,7 @@ export default function Home(): ReactNode {
 
       <article className={s.auctionLabel}>
         <h2>オークションLINEUP</h2>
-        <Link href="/" passHref>
+        <Link href="/auctionlist" passHref>
           <a>オークション一覧へ{`>>`}</a>
         </Link>
         <AuctionLabels />
@@ -34,7 +37,7 @@ export default function Home(): ReactNode {
         <h2>オークション出展LINEUP</h2>
         {/* <!-- carDetail --> */}
 
-        <CarLabelCard />
+        <CarLabelCard carData={carData} />
 
         <div className={s.pager}>
           <p>全1,560</p>
@@ -55,3 +58,15 @@ export default function Home(): ReactNode {
 }
 
 Home.Layout = Layout;
+
+
+
+export async function getServerSideProps(context) {
+  const res = await axios.get("http://localhost:9000/car-body-number");
+  const carData = await res.data
+  return {
+    props: {
+      carData
+    },
+  };
+}

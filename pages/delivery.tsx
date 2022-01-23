@@ -216,3 +216,8 @@ export default function Delivery(): ReactNode{
 }
 
 Delivery.Layout = Layout;
+
+export async function getServerSideProps({ res, params }) {
+  console.log(res);
+  
+}
