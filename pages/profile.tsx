@@ -3,6 +3,9 @@ import { ReactNode } from "react";
 import s from "../styles/profile.module.css";
 
 export default function Profile() :ReactNode{
+
+
+
     return (
       <div className={s.profile}>
         <article>
@@ -42,6 +45,8 @@ export default function Profile() :ReactNode{
 
           <div>
             <table>
+              <thead>
+
               <tr>
                 <th>画像</th>
                 <th>車種名</th>
@@ -54,6 +59,9 @@ export default function Profile() :ReactNode{
                 <th>車検有無</th>
                 <th>修復歴</th>
               </tr>
+              </thead>
+              <tbody>
+
               <tr>
                 <td>
                   <img
@@ -71,6 +79,7 @@ export default function Profile() :ReactNode{
                 <td>2022年4月</td>
                 <td>あり</td>
               </tr>
+              </tbody>
             </table>
 
             <div className={s.pager}>

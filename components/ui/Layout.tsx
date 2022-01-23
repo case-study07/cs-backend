@@ -3,6 +3,7 @@ import { Footer, Header } from ".";
 import  s  from "../../styles/Layout.module.css";
 
 const Layout: FC = ({ children }) => {
+  
   return (
     <>
       <Header />

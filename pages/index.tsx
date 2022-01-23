@@ -11,7 +11,11 @@ import axios from "axios";
 
 
 
-export default function Home(): ReactNode {
+export default function Home(query: any): ReactNode {
+  const user = query.user;
+
+  console.log(user);
+  
 
 
 
@@ -21,7 +25,7 @@ export default function Home(): ReactNode {
 
       <article className={s.auctionLabel}>
         <h2>オークションLINEUP</h2>
-        <Link href="/" passHref>
+        <Link href="/auctionlist" passHref>
           <a>オークション一覧へ{`>>`}</a>
         </Link>
         <AuctionLabels />
@@ -55,3 +59,16 @@ export default function Home(): ReactNode {
 }
 
 Home.Layout = Layout;
+
+
+
+// export async function getStaticProps() {
+//   const res = await axios.get(`http://localhost:9000/member`);
+//   const user = await res.data;
+  
+//   return {
+//     props: {
+//       user,
+//     }
+//   };
+// }

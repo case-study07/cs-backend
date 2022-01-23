@@ -2,12 +2,16 @@ import { Layout } from "components/ui";
 import s from "../styles/carEntry.module.css";
 
 export default function CarEntry() {
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          console.log(e);
+        };
     return (
       <div className={s.carEntry}>
         <article>
           <h2>車登録</h2>
           <p>アイコン</p>
-          <form action="">
+          <form onSubmit={handleSubmit}>
               <div className={s.icon}>
                 <div>
                     <label htmlFor=""><input type="file" name="" id="" />ファイルを選択</label>

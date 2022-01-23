@@ -29,9 +29,7 @@ export default function LoginUpPerson() {
         );
       const data = await res.data;
 
-      console.log(data.member);
-
-      setCookie("token", data);
+      setCookie(`id${data.member.id}`, data);
       return setLogin(true);
 
     } catch (error: any) {
@@ -43,7 +41,7 @@ export default function LoginUpPerson() {
     fetchAPI(userEmail, userPassword);
     console.log("aaaa");
     if (login) {
-      router.push('/');
+     return router.push('/');
     }
     setErrorMsg(
       "ユーザーが存在しません メールアドレス もしくはパスワードがまちがっています"
