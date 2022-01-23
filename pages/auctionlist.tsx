@@ -18,23 +18,23 @@ export default function AuctionList() {
               <li>
                 <Link href="./auction">
                   <a>
-                    <img src="../img/86label.png" alt="オークションアイコン" />
+                    <img src="img/86label.png" alt="オークションアイコン" />
                   </a>
                 </Link>
               </li>
               <li>
                 <a href="./auction">
-                  <img src="../img/lightcar.png" alt="オークションアイコン" />
+                  <img src="img/lightcar.png" alt="オークションアイコン" />
                 </a>
               </li>
               <li>
                 <a href="./auction">
-                  <img src="../img/86label.png" alt="オークションアイコン" />
+                  <img src="img/86label.png" alt="オークションアイコン" />
                 </a>
               </li>
               <li>
                 <a href="./auction">
-                  <img src="../img/lightcar.png" alt="オークションアイコン" />
+                  <img src="img/lightcar.png" alt="オークションアイコン" />
                 </a>
               </li>
             </ul>

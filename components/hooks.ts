@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 
 // カウントダウンタイマー
-export function useCountTimer() {
+export function useCountTimer(props:number) {
     const [days, setDays] = useState(0);
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
@@ -13,7 +13,7 @@ export function useCountTimer() {
     useEffect(() => {
         // 時間取得
         const targetIntervalTime =
-            Math.ceil(new Date().getTime() / 1000 / 60 / 3) * 1000 * 60 * 3;
+            Math.ceil(new Date().getTime() / 1000 / 60 / props) * 1000 * 60 * props;
 
         // 取得時刻からカウントダウン
         const target = new Date(targetIntervalTime);

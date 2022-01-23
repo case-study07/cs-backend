@@ -61,7 +61,7 @@
 
 
 .bidForm{
-    @apply bg-main-color flex flex-col h-3/4 items-center justify-around text-center;
+    @apply bg-main-color flex flex-col h-3/4 items-center justify-around text-center p-6;
 
     & div:first-child p:last-of-type{
         @apply text-4xl;    

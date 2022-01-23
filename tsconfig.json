@@ -17,10 +17,10 @@
     "jsx": "preserve",
     "incremental": true
   },
-      "paths": {
-        "@ui/*": ["components/ui/*"],
-        "@card/*": ["components/Card/*"],
-      },
+    "paths": {
+      "@Card": ["./components/Card/*"],
+      "@styles": ["styles"],
+    },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

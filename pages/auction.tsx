@@ -1,60 +1,69 @@
 import axios from "axios";
 import { useCountTimer } from "components/hooks";
+import { Layout } from "components/ui";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
-import { ReactElement, useState } from "react";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import useSWR from "swr";
-import { Layout } from "../components/ui/";
+
 import a from '../styles/auction.module.css'
-
-interface Auction {
-  id:number
-  name:string
-}
+;
 
 
 
-export default function Auction(): ReactElement {
+
+export default function Auction({carData}) {
   
+
+  const [cookies] = useCookies()
   // カウントダウンタイマー
-  const { days, hours, minutes, seconds, isActive } = useCountTimer();
-  const [money, setMoney] = useState(4000000);
+  const { days, hours, minutes, seconds, isActive } = useCountTimer(1);
+  
+  // data　オークションデータ　フェッチ
+  const { data } = useSWR(
+    "http://localhost:9000/auction-situation",
+    (url: string) => axios(url).then((res) => res.data),
+    { refreshInterval: 1000 }
+  );
+      const [money, setMoney] = useState(data);
 
-// data　オークションデータ　フェッチ
-    const { data } = useSWR(
-      "http://localhost:9000/auction-color",
-      (url: string) => axios(url).then((res) => res.data),
-      { refreshInterval: 1000 }
-    );
-  
-  
-    const fetchAPI = async () => {
-      await fetch("http://localhost:9000/auction-color", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name:money,
-        }),
-      });
+  const fetchAPI = async () =>{
+    const url = `http://localhost:9000/auction-situation/1`;
+    
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        accept: "*/*",
+        Authorization: `Bearer ${cookies.token.payload}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        bidPrice: money,
+      }),
+    });
+    
     };
 
-  const getDataApi = (data: Auction[]) => {
-    let money: number[] = [];
-    data.map((item: Auction) => {
-        money.push(Number(item.name))
-    });
-    let MaxMoney = Math.max(...money);
-    return MaxMoney
-
+  useEffect(() => {
+    const closePrice = () => {
+      if (isActive) {
+        
+      }
     }
-  
+  },[isActive])
+
       const buttonHandler = () => {
         money;
         fetchAPI();
+        // console.log(carData);
         ;
       };
+  
+  const maxPrice = () => {
+    const maxPrice = data.map((price:any) =>price.hammerPrice);
+    return Math.max(...maxPrice);
+  }
   
   
 
@@ -92,7 +101,8 @@ export default function Auction(): ReactElement {
               予定表一覧
             </a>
             <h2>トヨタ86セレクション</h2>
-            <p className={a.carName}>日産スカイライン 3.0 GT タイプSP</p>
+            {/*タイマーが終わった時に更新 */}
+            <p className={a.carName}>{carData[0].carModel.name}</p>
             <div className={a.bid}>
               <div className={a.carImage}>
                 <img src="../img/Featured image.png" alt="" />
@@ -130,7 +140,11 @@ export default function Auction(): ReactElement {
                 <div className={a.bidForm}>
                   <div>
                     <p>現在価格</p>
-                    <p>{getDataApi(data)}円</p>
+                    <p>
+                      {isActive
+                        ? "集計中です次の商品まで少々お待ちください"
+                        : maxPrice() + "円"}
+                    </p>
                   </div>
                   <div>
                     <label htmlFor="">入札価格</label>
@@ -140,9 +154,16 @@ export default function Auction(): ReactElement {
                       name=""
                       id=""
                       value={money}
+                      {...(isActive ? "disabled" : "")}
                       onChange={(e) => setMoney(Number(e.target.value))}
                     />
-                    <button onClick={buttonHandler}>入札する</button>
+
+                    <button
+                      {...(isActive ? "disabled" : "")}
+                      onClick={buttonHandler}
+                    >
+                      入札する
+                    </button>
                   </div>
                 </div>
               </div>
@@ -154,45 +175,34 @@ export default function Auction(): ReactElement {
               <table>
                 <tr>
                   <th>型式</th>
-                  <td>DBA-ZV37</td>
+                  <td>{carData[0].format}</td>
                   <th>形状</th>
-                  <td>クーペ</td>
+                  <td>{carData[0].shape.name}</td>
                 </tr>
                 <tr>
                   <th>外装色</th>
-                  <td>赤</td>
+                  <td>{carData[0].exteriorColor.name}</td>
                   <th>内装色</th>
-                  <td>赤</td>
+                  <td>{carData[0].interiorColor.name}</td>
                 </tr>
                 <tr>
                   <th>エンジン</th>
-                  <td>ガソリン</td>
+                  <td>{carData[0].fuel.name}</td>
                   <th>排気量</th>
-                  <td>3000cc</td>
+                  <td>{carData[0].engineSize}cc</td>
                 </tr>
                 <tr>
                   <th>シフト</th>
-                  <td>コラムシフト</td>
+                  <td>{carData[0].shift.name}ト</td>
                   <th>車体番号</th>
-                  <td>横浜304</td>
+                  <td>{carData[0].carBodyNumber.number}</td>
                 </tr>
-                <tr>
-                  <th>評価点</th>
-                  <td>S</td>
-                  <th>車体評価</th>
-                  <td>SS</td>
-                </tr>
-                <tr>
-                  <th>車体評価</th>
-                  <td>A</td>
-                  <th>外装評価</th>
-                  <td>A</td>
-                </tr>
+
                 <tr>
                   <th> 乗車人数</th>
-                  <td>5名</td>
+                  <td>{carData[0].crewNumber}名</td>
                   <th>ドア数</th>
-                  <td>4</td>
+                  <td>{carData[0].doorNumber}</td>
                 </tr>
                 <tr>
                   <th>メーター交換</th>
@@ -202,17 +212,17 @@ export default function Auction(): ReactElement {
                 </tr>
                 <tr>
                   <th>ハンドル</th>
-                  <td>右</td>
+                  <td>{carData[0].handle.name}</td>
                   <th>ギア</th>
-                  <td>6速</td>
+                  <td>{carData[0].gear.name}</td>
                 </tr>
               </table>
               <table>
                 <tr>
                   <th>エアコン</th>
-                  <td>AC</td>
+                  <td>{carData[0].airConditoner.name}</td>
                   <th>車歴</th>
-                  <td>自家用車</td>
+                  <td>{carData[0].CarHistory}</td>
                 </tr>
                 <tr>
                   <th>付加</th>
@@ -222,14 +232,14 @@ export default function Auction(): ReactElement {
                 </tr>
                 <tr>
                   <th>年式(初年登録年)</th>
-                  <td>2015(H27)</td>
+                  <td>{carData[0].modelYear}</td>
                   <th>走行距離</th>
                   <td>14.4万km</td>
                 </tr>
                 <tr>
                   <th>修復歴</th>
                   <td>なし</td>
-                  <th>禁煙車</th>
+                  <th>禁煙・喫煙</th>
                   <td>ー</td>
                 </tr>
                 <tr>
@@ -238,12 +248,7 @@ export default function Auction(): ReactElement {
                   <th>キャンピングカー</th>
                   <td>ー</td>
                 </tr>
-                <tr>
-                  <th>福祉車両</th>
-                  <td>ー</td>
-                  <th>正規輸入車</th>
-                  <td>ー</td>
-                </tr>
+
                 <tr>
                   <th>車検</th>
                   <td colSpan={3}>
@@ -282,3 +287,15 @@ export default function Auction(): ReactElement {
     );
 }
 Auction.Layout = Layout;
+
+export async function getServerSideProps() {
+  const res = await axios.get("http://localhost:9000/car-body-number");
+  const carData = await res.data;
+
+  
+    return {
+      props: {
+        carData
+      }
+    }
+}
