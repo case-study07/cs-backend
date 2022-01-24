@@ -14,6 +14,8 @@ import a from "../../styles/auction.module.css";
 export default function Auction({ carData, hammerPrice }) {
   const router = useRouter();
   const { id } = router.query;
+
+  const [close,setClose] = useState(false)
   
   const [cookies] = useCookies();
   // カウントダウンタイマー
@@ -62,7 +64,7 @@ export default function Auction({ carData, hammerPrice }) {
   // 落札後の処理　ここから
   const auctionPrice = async () => {
     const url = `http://localhost:9000/auction-situation/search?bidPrice=${price}`;
-    const res = await axios.post(url);
+    const res = await axios.get(url);
 
     const memberId = await res.data.member.id;
     // auctionListing はurlに記載
@@ -82,12 +84,15 @@ export default function Auction({ carData, hammerPrice }) {
 
   }
 
-    useEffect(() => {
-      if (isActive) {
+  useEffect(() => {
+      setClose(isActive)
+      if (close) {
         console.log("落札しました");
-        // auctionPrice();
+        auctionPrice();
+        setClose(false)
         console.log("落札データ送信しました");
       }
+      
     }, [isActive]);
   // ここまで
 
