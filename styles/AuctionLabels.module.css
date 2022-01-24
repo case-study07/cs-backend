@@ -1,6 +1,8 @@
 .root {
+    & .card{
+        @apply flex py-1 w-11/12 mx-auto ;
+    }
     @apply  flex items-center  mx-0 ;
-    width:320px
     & .ItemImage{
         order: 2;
     }
