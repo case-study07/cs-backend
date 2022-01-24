@@ -43,6 +43,9 @@ export default function Auction({ carData, hammerPrice }) {
   };
 
 
+
+
+// 最新情報取得
   useEffect(() => {
     maxPrice();
   }, [seconds]);
@@ -56,13 +59,11 @@ export default function Auction({ carData, hammerPrice }) {
   };
 
 
-  // 落札後の処理
+  // 落札後の処理　ここから
   const auctionPrice = async () => {
     const url = `http://localhost:9000/auction-situation/search?bidPrice=${price}`;
     const res = await axios.post(url);
-    console.log('レス');
-    
-    
+
     const memberId = await res.data.member.id;
     // auctionListing はurlに記載
     const auctionListingId = 2;
@@ -80,13 +81,20 @@ export default function Auction({ carData, hammerPrice }) {
     );
 
   }
-  
+
+    useEffect(() => {
+      if (isActive) {
+        console.log("落札しました");
+        // auctionPrice();
+        console.log("落札データ送信しました");
+      }
+    }, [isActive]);
+  // ここまで
 
   const maxPrice = async () => {
     if (data) {
       const maxPrice = await data.map((price: any) => price.bidPrice);
-      console.log(maxPrice);
-      
+
       if (maxPrice.length > 0) {
 
         const max = Math.max(...maxPrice);
@@ -99,13 +107,7 @@ export default function Auction({ carData, hammerPrice }) {
 
   // オークション終了
 
-  useEffect(() => {
-    if (isActive) {
-      console.log('落札しました');
-      // auctionPrice();
-      console.log("落札データ送信しました");
-    }
-  }, [isActive])
+
   
   useEffect(() => {
     maxPrice();
@@ -336,6 +338,10 @@ export async function getServerSideProps({query}) {
   const carData = await resCarData.data;
   const auctionListingId= query.id; 
   const resHammer = await axios.get(`http://localhost:9000/auction-listing/${auctionListingId}?auctionListingId=${auctionListingId}`);
+  // const auctionTitleUrl = `http://localhost:9000/auction${auctionListingId}`;
+  // const auctionTitle = await axios.get(auctionTitleUrl);
+  // console.log(auctionTitle.data);
+  
   
 
   //  初期料金から10%追加した値段
