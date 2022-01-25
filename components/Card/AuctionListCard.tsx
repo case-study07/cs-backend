@@ -1,14 +1,13 @@
+import axios from "axios";
 import Link from "next/link";
-import s from "../../styles/AuctionLabels.module.css";
+import s from "../../styles/AuctionListCard.module.css";
 
-const AuctionListCard = () => {
+const AuctionListCard = ({ auction }) => {
+  
   const image = "/img/images.png";
-  // const styles = {bgImage:`background-image:${image}`};
-
-  const color = "#020202";
   return (
     <div className={s.root}>
-      <Link href="/auction">
+      <Link href={`auction/${auction.id}`} passHref>
         <a>
           <div className={s.card}>
             <img
@@ -23,16 +22,16 @@ const AuctionListCard = () => {
               className={s.root}
               style={{
                 height: "180px",
-                backgroundColor: `${color}`,
+                backgroundColor: `${auction.auctionColor}`,
                 opacity: "0.5",
                 width: "100%",
               }}
             >
               <p className={s.ItemImage}></p>
               <div className={s.text}>
-                <p>12月25日 19:00~</p>
-                <p>トヨタ86セレクション</p>
-                <p>新型から年代物まで年代物まで勢揃い</p>
+                <p>{auction.startTime}</p>
+                <p>{auction.auctionName}</p>
+                <p>{auction.subTitle}</p>
               </div>
             </div>
           </div>

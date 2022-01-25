@@ -2,7 +2,8 @@ import s from "../../styles/CarLabelCard.module.css";
 import Link from "next/link";
 import { ReactNode } from "react";
 
-const CarLabelCard = ({ carData }) => {
+const CarLabelCard = ({ car }) => {
+console.log(car);
 
 
   return (
@@ -34,10 +35,10 @@ const CarLabelCard = ({ carData }) => {
                     alt="オークション出展用車"
                   />
                 </td>
-                <td>86 2.0 GT HKS WORK18AW</td>
+                <td>{car.carModel.name}</td>
                 <td>12月25日</td>
                 <td>1720000〜</td>
-                <td>DBA-ZN6</td>
+                <td>{car.format}</td>
                 <td>2014</td>
                 <td>6.2万km</td>
                 <td>2000cc</td>

@@ -1,0 +1,13 @@
+.root {
+    width:50%;
+    & .card{
+        @apply flex  w-full;    ;
+    }
+    @apply   items-center  mx-0 ;
+
+    & .text{
+        & >* {
+            @apply  p-2 text-white ;
+        };
+    }
+}

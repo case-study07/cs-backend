@@ -17,18 +17,20 @@ export default function Auction({ carData, hammerPrice }) {
 
   const [close,setClose] = useState(false)
   
+  const [price, setPrice] = useState(hammerPrice);
   const [cookies] = useCookies();
+  
+  
   // カウントダウンタイマー
-  const { days, hours, minutes, seconds, isActive } = useCountTimer(3);
-  const [price ,setPrice] =useState(hammerPrice)
+  const { days, hours, minutes, seconds, isActive } = useCountTimer(5);
   // data　オークションデータ　フェッチ
   const { data } = useSWR(
-    "http://localhost:9000/auction-situation",
+    `http://localhost:9000/auction-situation/${id}`,
     (url: string) => axios(url).then((res) => res.data),
     { refreshInterval: 1000 }
-  );
-  const [money, setMoney] = useState(data);
-  
+    );
+  const [money, setMoney] = useState(data); 
+
   const fetchAPI = async () => {
     const url = `http://localhost:9000/auction-situation/${id}`;
     await fetch(url, {
@@ -46,11 +48,6 @@ export default function Auction({ carData, hammerPrice }) {
 
 
 
-
-// 最新情報取得
-  useEffect(() => {
-    maxPrice();
-  }, [seconds]);
 
   const buttonHandler = () => {
     if (cookies != null) {
@@ -84,11 +81,12 @@ export default function Auction({ carData, hammerPrice }) {
 
   }
 
+
   useEffect(() => {
       setClose(isActive)
       if (close) {
         console.log("落札しました");
-        auctionPrice();
+        // auctionPrice();
         setClose(false)
         console.log("落札データ送信しました");
       }
@@ -98,17 +96,12 @@ export default function Auction({ carData, hammerPrice }) {
 
   const maxPrice = async () => {
     if (data) {
-      const maxPrice = await data.map((price: any) => price.bidPrice);
-
-      if (maxPrice.length > 0) {
-
-        const max = Math.max(...maxPrice);
-        const ans = max < price ? price : max;
-        setPrice(ans);
+      data.bidPrice > price ? setPrice(data.bidPrice) : setPrice(price);
+      
       }
 
     } 
-  };
+  
 
   // オークション終了
 
@@ -166,7 +159,7 @@ export default function Auction({ carData, hammerPrice }) {
               <dl>
                 <div>
                   <dt>入札件数</dt>
-                  <dd>{data.length}</dd>
+                  <dd>{data.auctionSituationCount}</dd>
                   <dd>
                     <Link href="/userHistory">
                       <a>入札履歴</a>
