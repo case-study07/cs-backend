@@ -11,23 +11,19 @@ import axios from "axios";
 
 
 
-export default function Home({carData}): ReactNode {
+export default function Home({carData, auctionList}): ReactNode {
 
 
   
-
 
 
   return (
     <>
       <Category />
 
+      <h2>オークション一覧</h2>
       <article className={s.auctionLabel}>
-        <h2>オークションLINEUP</h2>
-        <Link href="/auctionlist" passHref>
-          <a>オークション一覧へ{`>>`}</a>
-        </Link>
-        <AuctionLabels />
+        <AuctionLabels list={auctionList} />
       </article>
 
       {/* <!-- ここまで --> */}
@@ -37,9 +33,9 @@ export default function Home({carData}): ReactNode {
         <h2>オークション出展LINEUP</h2>
         {/* <!-- carDetail --> */}
 
-        <CarLabelCard carData={carData} />
+        {carData.map((car) => <CarLabelCard key={car.id} car={car} />)}
 
-        <div className={s.pager}>
+        {/* <div className={s.pager}>
           <p>全1,560</p>
           <div>
             <a href="">戻る</a>
@@ -51,7 +47,7 @@ export default function Home({carData}): ReactNode {
             <a href="">6</a>
             <a href="">次へ</a>
           </div>
-        </div>
+        </div> */}
       </article>
     </>
   );
@@ -63,10 +59,14 @@ Home.Layout = Layout;
 
 export async function getServerSideProps(context) {
   const res = await axios.get("http://localhost:9000/car-body-number");
+  const auction = await axios.get("http://localhost:9000/auction");
+  const auctionList = await auction.data
+
   const carData = await res.data
   return {
     props: {
-      carData
+      carData,
+      auctionList
     },
   };
 }

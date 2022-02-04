@@ -3,19 +3,18 @@
 /* auctionLabel */
 .auctionLabel {
   display: flex;
-  flex-flow: column;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 
   & > div {
-    @apply flex order-2 mx-auto w-11/12 ;
+    @apply flex  mx-auto  ;
     flex-wrap: wrap;
     & img {
       @apply w-full h-auto;
     }
   }
   & > a {
-    @apply order-3 text-right;
+    @apply  text-right;
   }
 }
  .auctionLabel > h2 {
